@@ -1,0 +1,1679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="kuali rice 2" resourceRoot="" soapui-version="4.5.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="campusServiceSoapBinding" type="wsdl" bindingName="{http://rice.kuali.org/location/v2_0}campusServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService?wsdl"><con:part><con:url>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="campusService" targetNamespace="http://rice.kuali.org/location/v2_0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://rice.kuali.org/location/v2_0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://rice.kuali.org/core/v2_0">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://rice.kuali.org/location/v2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://rice.kuali.org/core/v2_0"/>
+      <xs:element name="CampusQueryResults" type="tns:CampusQueryResultsType"/>
+      <xs:element name="CampusTypeQueryResults" type="tns:CampusTypeQueryResultsType"/>
+      <xs:element name="campus" type="tns:CampusType"/>
+      <xs:element name="campusType" type="tns:CampusTypeType"/>
+      <xs:element name="findAllCampusTypes" type="tns:findAllCampusTypes"/>
+      <xs:element name="findAllCampusTypesResponse" type="tns:findAllCampusTypesResponse"/>
+      <xs:element name="findAllCampuses" type="tns:findAllCampuses"/>
+      <xs:element name="findAllCampusesResponse" type="tns:findAllCampusesResponse"/>
+      <xs:element name="findCampusTypes" type="tns:findCampusTypes"/>
+      <xs:element name="findCampusTypesResponse" type="tns:findCampusTypesResponse"/>
+      <xs:element name="findCampuses" type="tns:findCampuses"/>
+      <xs:element name="findCampusesResponse" type="tns:findCampusesResponse"/>
+      <xs:element name="getCampus" type="tns:getCampus"/>
+      <xs:element name="getCampusResponse" type="tns:getCampusResponse"/>
+      <xs:element name="getCampusType" type="tns:getCampusType"/>
+      <xs:element name="getCampusTypeResponse" type="tns:getCampusTypeResponse"/>
+      <xs:complexType name="findAllCampuses">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="findAllCampusesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="campuses">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:campus"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="CampusType">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="shortName" type="xs:string"/>
+          <xs:element minOccurs="0" ref="tns:campusType"/>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="versionNumber" type="xs:long"/>
+          <xs:element minOccurs="0" name="objectId" type="xs:string"/>
+          <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="CampusTypeType">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="versionNumber" type="xs:long"/>
+          <xs:element minOccurs="0" name="objectId" type="xs:string"/>
+          <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCampus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCampusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:campus"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCampusType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCampusTypeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:campusType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCampuses">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="query" type="ns1:QueryByCriteriaType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCampusesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="results" type="tns:CampusQueryResultsType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CampusQueryResultsType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="results">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Campus" type="tns:CampusType"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="totalRowCount" type="xs:int"/>
+          <xs:element name="moreResultsAvailable" type="xs:boolean"/>
+          <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCampusTypes">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="query" type="ns1:QueryByCriteriaType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCampusTypesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="results" type="tns:CampusTypeQueryResultsType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CampusTypeQueryResultsType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="results">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="CampusType" type="tns:CampusTypeType"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="totalRowCount" type="xs:int"/>
+          <xs:element name="moreResultsAvailable" type="xs:boolean"/>
+          <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllCampusTypes">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="findAllCampusTypesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="campusTypes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:campusType"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://rice.kuali.org/core/v2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://rice.kuali.org/core/v2_0">
+      <xs:element name="and" type="tns:AndType"/>
+      <xs:element name="dateTimeValue" type="tns:CriteriaDateTimeValueType"/>
+      <xs:element name="decimalValue" type="tns:CriteriaDecimalValueType"/>
+      <xs:element name="equal" type="tns:EqualType"/>
+      <xs:element name="equalIgnoreCase" type="tns:EqualIgnoreCaseType"/>
+      <xs:element name="greaterThan" type="tns:GreaterThanType"/>
+      <xs:element name="greaterThanOrEqual" type="tns:GreaterThanOrEqualType"/>
+      <xs:element name="in" type="tns:InType"/>
+      <xs:element name="inIgnoreCase" type="tns:InIgnoreCaseType"/>
+      <xs:element name="integerValue" type="tns:CriteriaIntegerValueType"/>
+      <xs:element name="lessThan" type="tns:LessThanType"/>
+      <xs:element name="lessThanOrEqual" type="tns:LessThanOrEqualType"/>
+      <xs:element name="like" type="tns:LikeType"/>
+      <xs:element name="notEqual" type="tns:NotEqualType"/>
+      <xs:element name="notEqualIgnoreCase" type="tns:NotEqualIgnoreCaseType"/>
+      <xs:element name="notIn" type="tns:NotInType"/>
+      <xs:element name="notInIgnoreCase" type="tns:NotInIgnoreCaseType"/>
+      <xs:element name="notLike" type="tns:NotLikeType"/>
+      <xs:element name="notNull" type="tns:NotNullType"/>
+      <xs:element name="null" type="tns:NullType"/>
+      <xs:element name="or" type="tns:OrType"/>
+      <xs:element name="queryByCriteria" type="tns:QueryByCriteriaType"/>
+      <xs:element name="stringValue" type="tns:CriteriaStringValueType"/>
+      <xs:complexType final="extension restriction" name="QueryByCriteriaType">
+        <xs:sequence>
+          <xs:choice minOccurs="0">
+            <xs:element ref="tns:and"/>
+            <xs:element ref="tns:equal"/>
+            <xs:element ref="tns:equalIgnoreCase"/>
+            <xs:element ref="tns:greaterThan"/>
+            <xs:element ref="tns:greaterThanOrEqual"/>
+            <xs:element ref="tns:in"/>
+            <xs:element ref="tns:inIgnoreCase"/>
+            <xs:element ref="tns:lessThan"/>
+            <xs:element ref="tns:lessThanOrEqual"/>
+            <xs:element ref="tns:like"/>
+            <xs:element ref="tns:notEqual"/>
+            <xs:element ref="tns:notEqualIgnoreCase"/>
+            <xs:element ref="tns:notIn"/>
+            <xs:element ref="tns:notInIgnoreCase"/>
+            <xs:element ref="tns:notLike"/>
+            <xs:element ref="tns:notNull"/>
+            <xs:element ref="tns:null"/>
+            <xs:element ref="tns:or"/>
+          </xs:choice>
+          <xs:element minOccurs="0" name="startAtIndex" type="xs:int"/>
+          <xs:element minOccurs="0" name="maxResults" type="xs:int"/>
+          <xs:element name="countFlag" type="xs:string"/>
+          <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="AndType">
+        <xs:complexContent>
+          <xs:extension base="tns:CompositePredicateType">
+            <xs:sequence>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="CompositePredicateType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="tns:and"/>
+                <xs:element ref="tns:equal"/>
+                <xs:element ref="tns:equalIgnoreCase"/>
+                <xs:element ref="tns:greaterThan"/>
+                <xs:element ref="tns:greaterThanOrEqual"/>
+                <xs:element ref="tns:in"/>
+                <xs:element ref="tns:inIgnoreCase"/>
+                <xs:element ref="tns:lessThan"/>
+                <xs:element ref="tns:lessThanOrEqual"/>
+                <xs:element ref="tns:like"/>
+                <xs:element ref="tns:notEqual"/>
+                <xs:element ref="tns:notEqualIgnoreCase"/>
+                <xs:element ref="tns:notIn"/>
+                <xs:element ref="tns:notInIgnoreCase"/>
+                <xs:element ref="tns:notLike"/>
+                <xs:element ref="tns:notNull"/>
+                <xs:element ref="tns:null"/>
+                <xs:element ref="tns:or"/>
+              </xs:choice>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="abstractPredicate">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="EqualType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice>
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+                <xs:element ref="tns:decimalValue"/>
+                <xs:element ref="tns:integerValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:simpleType name="CriteriaStringValueType">
+        <xs:restriction base="xs:string"/>
+      </xs:simpleType>
+      <xs:simpleType name="CriteriaDateTimeValueType">
+        <xs:restriction base="xs:dateTime"/>
+      </xs:simpleType>
+      <xs:simpleType name="CriteriaDecimalValueType">
+        <xs:restriction base="xs:decimal"/>
+      </xs:simpleType>
+      <xs:simpleType name="CriteriaIntegerValueType">
+        <xs:restriction base="xs:integer"/>
+      </xs:simpleType>
+      <xs:complexType final="extension restriction" name="EqualIgnoreCaseType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:element ref="tns:stringValue"/>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="GreaterThanType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice>
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:decimalValue"/>
+                <xs:element ref="tns:integerValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="GreaterThanOrEqualType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice>
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:decimalValue"/>
+                <xs:element ref="tns:integerValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="InType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+                <xs:element ref="tns:integerValue"/>
+                <xs:element ref="tns:decimalValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="InIgnoreCaseType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" ref="tns:stringValue"/>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="LessThanType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice>
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:decimalValue"/>
+                <xs:element ref="tns:integerValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="LessThanOrEqualType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice>
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:decimalValue"/>
+                <xs:element ref="tns:integerValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="LikeType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:element ref="tns:stringValue"/>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="NotEqualType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice>
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+                <xs:element ref="tns:decimalValue"/>
+                <xs:element ref="tns:integerValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="NotEqualIgnoreCaseType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:element ref="tns:stringValue"/>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="NotInType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element ref="tns:stringValue"/>
+                <xs:element ref="tns:dateTimeValue"/>
+                <xs:element ref="tns:integerValue"/>
+                <xs:element ref="tns:decimalValue"/>
+              </xs:choice>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="NotInIgnoreCaseType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" ref="tns:stringValue"/>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="NotLikeType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:element ref="tns:stringValue"/>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="NotNullType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="NullType">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractPredicate">
+            <xs:sequence>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="propertyPath" type="xs:string"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="OrType">
+        <xs:complexContent>
+          <xs:extension base="tns:CompositePredicateType">
+            <xs:sequence>
+              <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="skip"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="IllegalArgumentFault" type="tns:IllegalArgumentFault"/>
+      <xs:complexType name="IllegalArgumentFault">
+        <xs:sequence/>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findAllCampusesResponse">
+    <wsdl:part element="tns:findAllCampusesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampusType">
+    <wsdl:part element="tns:getCampusType" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCampusTypes">
+    <wsdl:part element="tns:findCampusTypes" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllCampusTypes">
+    <wsdl:part element="tns:findAllCampusTypes" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCampusesResponse">
+    <wsdl:part element="tns:findCampusesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RiceIllegalArgumentException">
+    <wsdl:part element="ns1:IllegalArgumentFault" name="RiceIllegalArgumentException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampus">
+    <wsdl:part element="tns:getCampus" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampusResponse">
+    <wsdl:part element="tns:getCampusResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCampuses">
+    <wsdl:part element="tns:findCampuses" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllCampuses">
+    <wsdl:part element="tns:findAllCampuses" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllCampusTypesResponse">
+    <wsdl:part element="tns:findAllCampusTypesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampusTypeResponse">
+    <wsdl:part element="tns:getCampusTypeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCampusTypesResponse">
+    <wsdl:part element="tns:findCampusTypesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="campusService">
+    <wsdl:operation name="findAllCampuses">
+      <wsdl:input message="tns:findAllCampuses" name="findAllCampuses"></wsdl:input>
+      <wsdl:output message="tns:findAllCampusesResponse" name="findAllCampusesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCampus">
+      <wsdl:input message="tns:getCampus" name="getCampus"></wsdl:input>
+      <wsdl:output message="tns:getCampusResponse" name="getCampusResponse"></wsdl:output>
+      <wsdl:fault message="tns:RiceIllegalArgumentException" name="RiceIllegalArgumentException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampusType">
+      <wsdl:input message="tns:getCampusType" name="getCampusType"></wsdl:input>
+      <wsdl:output message="tns:getCampusTypeResponse" name="getCampusTypeResponse"></wsdl:output>
+      <wsdl:fault message="tns:RiceIllegalArgumentException" name="RiceIllegalArgumentException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCampuses">
+      <wsdl:input message="tns:findCampuses" name="findCampuses"></wsdl:input>
+      <wsdl:output message="tns:findCampusesResponse" name="findCampusesResponse"></wsdl:output>
+      <wsdl:fault message="tns:RiceIllegalArgumentException" name="RiceIllegalArgumentException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCampusTypes">
+      <wsdl:input message="tns:findCampusTypes" name="findCampusTypes"></wsdl:input>
+      <wsdl:output message="tns:findCampusTypesResponse" name="findCampusTypesResponse"></wsdl:output>
+      <wsdl:fault message="tns:RiceIllegalArgumentException" name="RiceIllegalArgumentException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAllCampusTypes">
+      <wsdl:input message="tns:findAllCampusTypes" name="findAllCampusTypes"></wsdl:input>
+      <wsdl:output message="tns:findAllCampusTypesResponse" name="findAllCampusTypesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="campusServiceSoapBinding" type="tns:campusService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findAllCampuses">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findAllCampuses">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAllCampusesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCampus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCampus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCampusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="RiceIllegalArgumentException">
+        <soap:fault name="RiceIllegalArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampusType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCampusType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCampusTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="RiceIllegalArgumentException">
+        <soap:fault name="RiceIllegalArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCampuses">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findCampuses">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findCampusesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="RiceIllegalArgumentException">
+        <soap:fault name="RiceIllegalArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAllCampusTypes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findAllCampusTypes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAllCampusTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findCampusTypes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findCampusTypes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findCampusTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="RiceIllegalArgumentException">
+        <soap:fault name="RiceIllegalArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="campusService">
+    <wsdl:port binding="tns:campusServiceSoapBinding" name="campusServicePort">
+      <soap:address location="http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="findAllCampuses" bindingOperationName="findAllCampuses" type="Request-Response" outputName="findAllCampusesResponse" inputName="findAllCampuses" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1" outgoingWss="rice keystore"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://rice.kuali.org/location/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:findAllCampuses/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rice.kuali.org/location/v2_0/campusService/findAllCampuses"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="findAllCampusTypes" bindingOperationName="findAllCampusTypes" type="Request-Response" outputName="findAllCampusTypesResponse" inputName="findAllCampusTypes" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://rice.kuali.org/location/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:findAllCampusTypes/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rice.kuali.org/location/v2_0/campusService/findAllCampusTypes"/></con:call></con:operation><con:operation isOneWay="false" action="" name="findCampuses" bindingOperationName="findCampuses" type="Request-Response" outputName="findCampusesResponse" inputName="findCampuses" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://rice.kuali.org/location/v2_0" xmlns:v21="http://rice.kuali.org/core/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:findCampuses>
+         <!--Optional:-->
+         <v2:query>
+            <!--You have a CHOICE of the next 18 items at this level-->
+            <v21:and>
+               <!--You have a CHOICE of the next 18 items at this level-->
+               <v21:and/>
+               <v21:equal propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equal>
+               <v21:equalIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equalIgnoreCase>
+               <v21:greaterThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThan>
+               <v21:greaterThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThanOrEqual>
+               <v21:in propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:in>
+               <v21:inIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:inIgnoreCase>
+               <v21:lessThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThan>
+               <v21:lessThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThanOrEqual>
+               <v21:like propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:like>
+               <v21:notEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqual>
+               <v21:notEqualIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqualIgnoreCase>
+               <v21:notIn propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notIn>
+               <v21:notInIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notInIgnoreCase>
+               <v21:notLike propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notLike>
+               <v21:notNull propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:notNull>
+               <v21:null propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:null>
+               <v21:or>
+                  <!--You have a CHOICE of the next 18 items at this level-->
+                  <v21:and/>
+                  <v21:equal propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equal>
+                  <v21:equalIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equalIgnoreCase>
+                  <v21:greaterThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThan>
+                  <v21:greaterThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThanOrEqual>
+                  <v21:in propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:in>
+                  <v21:inIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:inIgnoreCase>
+                  <v21:lessThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThan>
+                  <v21:lessThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThanOrEqual>
+                  <v21:like propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:like>
+                  <v21:notEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqual>
+                  <v21:notEqualIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqualIgnoreCase>
+                  <v21:notIn propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notIn>
+                  <v21:notInIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notInIgnoreCase>
+                  <v21:notLike propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notLike>
+                  <v21:notNull propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notNull>
+                  <v21:null propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:null>
+                  <v21:or/>
+                  <!--You may enter ANY elements at this point-->
+               </v21:or>
+               <!--You may enter ANY elements at this point-->
+            </v21:and>
+            <v21:equal propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:equal>
+            <v21:equalIgnoreCase propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:equalIgnoreCase>
+            <v21:greaterThan propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:greaterThan>
+            <v21:greaterThanOrEqual propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:greaterThanOrEqual>
+            <v21:in propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:in>
+            <v21:inIgnoreCase propertyPath="?">
+               <!--1 or more repetitions:-->
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:inIgnoreCase>
+            <v21:lessThan propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:lessThan>
+            <v21:lessThanOrEqual propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:lessThanOrEqual>
+            <v21:like propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:like>
+            <v21:notEqual propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notEqual>
+            <v21:notEqualIgnoreCase propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notEqualIgnoreCase>
+            <v21:notIn propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notIn>
+            <v21:notInIgnoreCase propertyPath="?">
+               <!--1 or more repetitions:-->
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notInIgnoreCase>
+            <v21:notLike propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notLike>
+            <v21:notNull propertyPath="?">
+               <!--You may enter ANY elements at this point-->
+            </v21:notNull>
+            <v21:null propertyPath="?">
+               <!--You may enter ANY elements at this point-->
+            </v21:null>
+            <v21:or>
+               <!--You have a CHOICE of the next 18 items at this level-->
+               <v21:and>
+                  <!--You have a CHOICE of the next 18 items at this level-->
+                  <v21:and/>
+                  <v21:equal propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equal>
+                  <v21:equalIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equalIgnoreCase>
+                  <v21:greaterThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThan>
+                  <v21:greaterThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThanOrEqual>
+                  <v21:in propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:in>
+                  <v21:inIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:inIgnoreCase>
+                  <v21:lessThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThan>
+                  <v21:lessThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThanOrEqual>
+                  <v21:like propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:like>
+                  <v21:notEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqual>
+                  <v21:notEqualIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqualIgnoreCase>
+                  <v21:notIn propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notIn>
+                  <v21:notInIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notInIgnoreCase>
+                  <v21:notLike propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notLike>
+                  <v21:notNull propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notNull>
+                  <v21:null propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:null>
+                  <v21:or/>
+                  <!--You may enter ANY elements at this point-->
+               </v21:and>
+               <v21:equal propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equal>
+               <v21:equalIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equalIgnoreCase>
+               <v21:greaterThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThan>
+               <v21:greaterThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThanOrEqual>
+               <v21:in propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:in>
+               <v21:inIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:inIgnoreCase>
+               <v21:lessThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThan>
+               <v21:lessThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThanOrEqual>
+               <v21:like propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:like>
+               <v21:notEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqual>
+               <v21:notEqualIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqualIgnoreCase>
+               <v21:notIn propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notIn>
+               <v21:notInIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notInIgnoreCase>
+               <v21:notLike propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notLike>
+               <v21:notNull propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:notNull>
+               <v21:null propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:null>
+               <v21:or/>
+               <!--You may enter ANY elements at this point-->
+            </v21:or>
+            <!--Optional:-->
+            <v21:startAtIndex>?</v21:startAtIndex>
+            <!--Optional:-->
+            <v21:maxResults>?</v21:maxResults>
+            <v21:countFlag>?</v21:countFlag>
+            <!--You may enter ANY elements at this point-->
+         </v2:query>
+      </v2:findCampuses>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rice.kuali.org/location/v2_0/campusService/findCampuses"/></con:call></con:operation><con:operation isOneWay="false" action="" name="findCampusTypes" bindingOperationName="findCampusTypes" type="Request-Response" outputName="findCampusTypesResponse" inputName="findCampusTypes" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://rice.kuali.org/location/v2_0" xmlns:v21="http://rice.kuali.org/core/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:findCampusTypes>
+         <!--Optional:-->
+         <v2:query>
+            <!--You have a CHOICE of the next 18 items at this level-->
+            <v21:and>
+               <!--You have a CHOICE of the next 18 items at this level-->
+               <v21:and/>
+               <v21:equal propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equal>
+               <v21:equalIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equalIgnoreCase>
+               <v21:greaterThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThan>
+               <v21:greaterThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThanOrEqual>
+               <v21:in propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:in>
+               <v21:inIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:inIgnoreCase>
+               <v21:lessThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThan>
+               <v21:lessThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThanOrEqual>
+               <v21:like propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:like>
+               <v21:notEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqual>
+               <v21:notEqualIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqualIgnoreCase>
+               <v21:notIn propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notIn>
+               <v21:notInIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notInIgnoreCase>
+               <v21:notLike propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notLike>
+               <v21:notNull propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:notNull>
+               <v21:null propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:null>
+               <v21:or>
+                  <!--You have a CHOICE of the next 18 items at this level-->
+                  <v21:and/>
+                  <v21:equal propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equal>
+                  <v21:equalIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equalIgnoreCase>
+                  <v21:greaterThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThan>
+                  <v21:greaterThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThanOrEqual>
+                  <v21:in propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:in>
+                  <v21:inIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:inIgnoreCase>
+                  <v21:lessThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThan>
+                  <v21:lessThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThanOrEqual>
+                  <v21:like propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:like>
+                  <v21:notEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqual>
+                  <v21:notEqualIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqualIgnoreCase>
+                  <v21:notIn propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notIn>
+                  <v21:notInIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notInIgnoreCase>
+                  <v21:notLike propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notLike>
+                  <v21:notNull propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notNull>
+                  <v21:null propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:null>
+                  <v21:or/>
+                  <!--You may enter ANY elements at this point-->
+               </v21:or>
+               <!--You may enter ANY elements at this point-->
+            </v21:and>
+            <v21:equal propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:equal>
+            <v21:equalIgnoreCase propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:equalIgnoreCase>
+            <v21:greaterThan propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:greaterThan>
+            <v21:greaterThanOrEqual propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:greaterThanOrEqual>
+            <v21:in propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:in>
+            <v21:inIgnoreCase propertyPath="?">
+               <!--1 or more repetitions:-->
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:inIgnoreCase>
+            <v21:lessThan propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:lessThan>
+            <v21:lessThanOrEqual propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:lessThanOrEqual>
+            <v21:like propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:like>
+            <v21:notEqual propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <v21:integerValue>?</v21:integerValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notEqual>
+            <v21:notEqualIgnoreCase propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notEqualIgnoreCase>
+            <v21:notIn propertyPath="?">
+               <!--You have a CHOICE of the next 4 items at this level-->
+               <v21:stringValue>?</v21:stringValue>
+               <v21:dateTimeValue>?</v21:dateTimeValue>
+               <v21:integerValue>?</v21:integerValue>
+               <v21:decimalValue>?</v21:decimalValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notIn>
+            <v21:notInIgnoreCase propertyPath="?">
+               <!--1 or more repetitions:-->
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notInIgnoreCase>
+            <v21:notLike propertyPath="?">
+               <v21:stringValue>?</v21:stringValue>
+               <!--You may enter ANY elements at this point-->
+            </v21:notLike>
+            <v21:notNull propertyPath="?">
+               <!--You may enter ANY elements at this point-->
+            </v21:notNull>
+            <v21:null propertyPath="?">
+               <!--You may enter ANY elements at this point-->
+            </v21:null>
+            <v21:or>
+               <!--You have a CHOICE of the next 18 items at this level-->
+               <v21:and>
+                  <!--You have a CHOICE of the next 18 items at this level-->
+                  <v21:and/>
+                  <v21:equal propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equal>
+                  <v21:equalIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:equalIgnoreCase>
+                  <v21:greaterThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThan>
+                  <v21:greaterThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:greaterThanOrEqual>
+                  <v21:in propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:in>
+                  <v21:inIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:inIgnoreCase>
+                  <v21:lessThan propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThan>
+                  <v21:lessThanOrEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:lessThanOrEqual>
+                  <v21:like propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:like>
+                  <v21:notEqual propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqual>
+                  <v21:notEqualIgnoreCase propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notEqualIgnoreCase>
+                  <v21:notIn propertyPath="?">
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <v21:dateTimeValue>?</v21:dateTimeValue>
+                     <v21:integerValue>?</v21:integerValue>
+                     <v21:decimalValue>?</v21:decimalValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notIn>
+                  <v21:notInIgnoreCase propertyPath="?">
+                     <!--1 or more repetitions:-->
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notInIgnoreCase>
+                  <v21:notLike propertyPath="?">
+                     <v21:stringValue>?</v21:stringValue>
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notLike>
+                  <v21:notNull propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:notNull>
+                  <v21:null propertyPath="?">
+                     <!--You may enter ANY elements at this point-->
+                  </v21:null>
+                  <v21:or/>
+                  <!--You may enter ANY elements at this point-->
+               </v21:and>
+               <v21:equal propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equal>
+               <v21:equalIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:equalIgnoreCase>
+               <v21:greaterThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThan>
+               <v21:greaterThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:greaterThanOrEqual>
+               <v21:in propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:in>
+               <v21:inIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:inIgnoreCase>
+               <v21:lessThan propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThan>
+               <v21:lessThanOrEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:lessThanOrEqual>
+               <v21:like propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:like>
+               <v21:notEqual propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqual>
+               <v21:notEqualIgnoreCase propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notEqualIgnoreCase>
+               <v21:notIn propertyPath="?">
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <v21:dateTimeValue>?</v21:dateTimeValue>
+                  <v21:integerValue>?</v21:integerValue>
+                  <v21:decimalValue>?</v21:decimalValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notIn>
+               <v21:notInIgnoreCase propertyPath="?">
+                  <!--1 or more repetitions:-->
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notInIgnoreCase>
+               <v21:notLike propertyPath="?">
+                  <v21:stringValue>?</v21:stringValue>
+                  <!--You may enter ANY elements at this point-->
+               </v21:notLike>
+               <v21:notNull propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:notNull>
+               <v21:null propertyPath="?">
+                  <!--You may enter ANY elements at this point-->
+               </v21:null>
+               <v21:or/>
+               <!--You may enter ANY elements at this point-->
+            </v21:or>
+            <!--Optional:-->
+            <v21:startAtIndex>?</v21:startAtIndex>
+            <!--Optional:-->
+            <v21:maxResults>?</v21:maxResults>
+            <v21:countFlag>?</v21:countFlag>
+            <!--You may enter ANY elements at this point-->
+         </v2:query>
+      </v2:findCampusTypes>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rice.kuali.org/location/v2_0/campusService/findCampusTypes"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCampus" bindingOperationName="getCampus" type="Request-Response" outputName="getCampusResponse" inputName="getCampus" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://rice.kuali.org/location/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:getCampus>
+         <!--Optional:-->
+         <v2:code>?</v2:code>
+      </v2:getCampus>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rice.kuali.org/location/v2_0/campusService/getCampus"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCampusType" bindingOperationName="getCampusType" type="Request-Response" outputName="getCampusTypeResponse" inputName="getCampusType" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://demo.rice.kuali.org/remoting/soap/location/v2_0/campusService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://rice.kuali.org/location/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:getCampusType>
+         <!--Optional:-->
+         <v2:code>?</v2:code>
+      </v2:getCampusType>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rice.kuali.org/location/v2_0/campusService/getCampusType"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer><con:crypto><con:source>${projectDir}/rice.keystore</con:source><con:password>r1c3pw</con:password><con:type>KEYSTORE</con:type><con:defaultAlias>rice</con:defaultAlias><con:aliasPassword>r1c3pw</con:aliasPassword></con:crypto><con:outgoing mustUnderstand="true"><con:name>rice keystore</con:name><con:username>rice</con:username><con:password>r1c3pw</con:password><con:entry type="Signature"><con:configuration><crypto>rice.keystore</crypto><keyIdentifierType>0</keyIdentifierType><signatureAlgorithm/><signatureCanonicalization/><useSingleCert>false</useSingleCert><digestAlgorithm/></con:configuration></con:entry></con:outgoing></con:wssContainer><con:sensitiveInformation/></con:soapui-project>
